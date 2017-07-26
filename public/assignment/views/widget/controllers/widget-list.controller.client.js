@@ -2,7 +2,7 @@
 //immediately invoked function expressions
     angular
         .module("WebAppMaker")
-        .controller("widgetListController", widgetListController)
+        .controller("widgetListController", widgetListController);
 
     function widgetListController($sce, $location, $routeParams, widgetService) {
         var model = this;
@@ -37,7 +37,7 @@
         }
 
         function getIncludePath(widget) {
-            var path = "widget/templates/widget-"+widget.widgetType.toLowerCase()+".view.client.html";
+            var path = "views/widget/templates/widget-"+widget.widgetType.toLowerCase()+".view.client.html";
             return path;
         }
 

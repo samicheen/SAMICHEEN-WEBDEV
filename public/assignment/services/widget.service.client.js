@@ -74,21 +74,11 @@
 
         function checkWidget(widget)
         {
-            if (widget.widgetType === 'YOUTUBE' || widget.widgetType === 'IMAGE'){
-                if (typeof widget.url === 'undefined'){
-                    return false;
-                }
-                else {
-                    return true;
-                }
+            if (typeof widget.name === 'undefined'){
+                return false;
             }
-            else if (widget.widgetType === 'HEADING'){
-                if (typeof widget.text === 'undefined'){
-                    return false;
-                }
-                else {
-                    return true;
-                }
+            else {
+                return true;
             }
         }
 

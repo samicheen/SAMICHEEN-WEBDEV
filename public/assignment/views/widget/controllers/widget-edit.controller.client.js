@@ -37,7 +37,7 @@
         }
 
         function getEditPath(widget) {
-            var path = "widget/editors/widget-"+widget.widgetType.toLowerCase()+"-edit.view.client.html";
+            var path = "views/widget/editors/widget-"+widget.widgetType.toLowerCase()+"-edit.view.client.html";
             return path;
         }
     }
