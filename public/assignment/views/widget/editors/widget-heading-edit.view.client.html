@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <label for="name">Name</label>
+    <input name = "name"
+           ng-model = "model.widget.name"
+           placeholder="main heading"
+           class = "form-control"
+           id = "name" ng-required />
+
+    <label for="text">Text</label>
+    <input name = "text"
+           ng-model = "model.widget.text"
+           placeholder="Apple Inc."
+           class = "form-control"
+           id = "text"/>
+
+    <label for="size">Size</label>
+    <select id="size"
+            ng-model="model.widget.size"
+            class="form-control select">
+        <option value="1">1 (Largest)</option>
+        <option value="2">2 (XLarge)</option>
+        <option value="3">3 (Large)</option>
+        <option value="4">4 (Medium)</option>
+        <option value="5">5 (Small)</option>
+        <option value="6">6 (Smallest)</option>
+    </select>
+
+    <a class="btn btn-default btn-block btn-danger"
+       ng-click="model.deleteWidget(model.widget._id)"
+       role="button">Delete</a>
+</div>

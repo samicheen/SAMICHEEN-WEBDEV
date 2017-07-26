@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="navbar-link"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+
+        <div class="navbar-header col-xs-8">
+            <a class="navbar-brand" href="#">{{model.widget.widgetType}} Editor</a>
+        </div>
+
+        <div class="navbar-text pull-right">
+            <a class="navbar-link" ng-click="model.updateWidget(model.widget)">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+<div ng-include="model.getEditPath(model.widget)"></div>
+<div ng-include="'common/footer.view.client.html'"></div>

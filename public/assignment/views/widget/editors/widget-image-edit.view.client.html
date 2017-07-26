@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <label for="name">Name</label>
+    <input name = "name"
+           ng-model="model.widget.name"
+           placeholder="Image"
+           class = "form-control"
+           id = "name"/>
+
+    <label for="text">Text</label>
+    <input name = "text"
+           ng-model="model.widget.text"
+           placeholder="This is Apple Headquaters"
+           class = "form-control"
+           id = "text"/>
+
+    <label for="url">URL</label>
+    <input name = "url"
+           ng-model="model.widget.url"
+           placeholder="https://fortunedotcom.files.wordpress.com/2015/03/o-applecampus-facebook.jpg"
+           class = "form-control"
+           id = "url"/>
+
+    <label for="width">Width</label>
+    <input name = "width"
+           ng-model="model.widget.width"
+           placeholder="100%"
+           class = "form-control"
+           id = "width"/>
+
+    <label for="file">Upload Image</label>
+    <input id="file" multiple type="file" class="form-control"/>
+
+    <a class="btn btn-default btn-block btn-success"
+       href="#"
+       role="button">Upload</a>
+
+    <a class="btn btn-default btn-block btn-danger"
+       ng-click="model.deleteWidget(model.widget._id)"
+       role="button">Delete</a>
+</div>
