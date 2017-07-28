@@ -11,8 +11,36 @@ var websites = [
 ];
 
 app.get("/api/user/:userId/website", findWebsitesForUser);
-app.get("/api/user/:userId/website/:websiteId", findWebsiteById);
+app.get("/api/website/:websiteId", findWebsiteById);
 app.post("/api/user/:userId/website", createWebsite);
+app.put("/api/website/:websiteId", updateWebsite);
+app.delete("/api/website/:websiteId", deleteWebsite);
+
+function deleteWebsite(request, response) {
+    var websiteId = request.params.websiteId;
+    for (var w in websites){
+        if (websites[w]._id === websiteId)
+        {
+            websites.splice(w, 1);
+            response.send("success");
+            return;
+        }
+    }
+    response.sendStatus(404);
+}
+
+function updateWebsite(request, response) {
+    var websiteId = request.params.websiteId;
+    var website = request.body;
+    for (var w in websites){
+        if (websites[w]._id === websiteId){
+            websites[w] = website;
+            response.send(websites[w]);
+            return;
+        }
+    }
+    response.sendStatus(404);
+}
 
 function findWebsiteById(request, response) {
     var websiteId = request.params.websiteId;

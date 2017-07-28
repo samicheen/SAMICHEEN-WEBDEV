@@ -19,7 +19,7 @@
                 .then(function (websites) {
                     model.websites = websites;
                 });
-            websiteService.findWebsiteById(userId, websiteId)
+            websiteService.findWebsiteById(websiteId)
                 .then(function (website) {
                     model.website = website;
                 })
@@ -27,13 +27,17 @@
         init();
 
         function updateWebsite(website){
-            websiteService.updateWebsite(website._id, website);
-            $location.url("/user/"+ userId +"/website");
+            websiteService.updateWebsite(website._id, website)
+                .then(function () {
+                    $location.url("/user/"+ userId +"/website");
+                });
         }
 
         function deleteWebsite(websiteId){
-            websiteService.deleteWebsite(websiteId);
-            $location.url("/user/"+ userId +"/website");
+            websiteService.deleteWebsite(websiteId)
+                .then(function () {
+                    $location.url("/user/"+ userId +"/website");
+                });
         }
     }
 })();

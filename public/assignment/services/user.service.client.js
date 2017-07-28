@@ -4,8 +4,7 @@
         .factory("userService", userService);
 
     function userService($http){
-        var
-            _api = {
+        var _api = {
             "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
             "findUserById": findUserById,
             "registerUser": registerUser,
@@ -42,7 +41,7 @@
         function unregisterUser(userId)
         {
             var url = "/api/user/" + userId;
-            return $http.delete(url, userId);
+            return $http.delete(url);
         }
 
         function findUserByUsernameAndPassword(username, password)

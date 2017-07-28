@@ -15,13 +15,18 @@
         function init(){
             model.userId = userId;
             model.websiteId = websiteId;
-            model.pages = pageService.findPagesForWebsite(websiteId);
+            pageService.findPagesForWebsite(userId, websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
         }
         init();
 
         function createPage(page){
-            pageService.createPage(websiteId, page);
-            $location.url("/user/"+ userId +"/website/"+ websiteId + "/page");
+            pageService.createPage(websiteId, page)
+                .then(function () {
+                    $location.url("/user/"+ userId +"/website/"+ websiteId + "/page");
+                });
         }
     }
 })();
