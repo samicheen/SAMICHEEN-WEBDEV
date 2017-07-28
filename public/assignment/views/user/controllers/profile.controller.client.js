@@ -13,28 +13,24 @@
 
         function init() {
             userService.findUserById(userId)
-                .then(function (response) {
-                    model.user = response.data;
+                .then(function (user) {
+                    model.user = user;
             });
         }
         init();
 
         function updateUser(user) {
             userService.updateUser(user._id, user)
-                .then(function (response) {
-                    var update = response.data;
-                    if (update === null){
-                        model.updateErrorMessage = "User updation failed";
-                    }
-                    else{
-                        model.updateSuccessMessage = "User updated successfuly";
-                    }
+                .then(function (user) {
+                    model.updateSuccessMessage = "User updated successfuly";
                 });
         }
 
         function unregisterUser(userId) {
-            userService.unregisterUser(userId);
-            $location.url("/login");
+            userService.unregisterUser(userId)
+                .then(function () {
+                    $location.url("/login");
+                });
         }
     }
 })();

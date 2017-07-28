@@ -45,5 +45,16 @@
             var widget = widgetService.createWidget(pageId, widget);
             $location.url("/user/"+ userId +"/website/"+ websiteId + "/page/"+ pageId + "/widget/"+ widget._id);
         }
+
+        function trust(html) {
+            return $sce.trustAsHtml(html);
+        }
+
+        function getYouTubeEmbedUrl(linkUrl){
+            var embedUrl = "https://www.youtube.com/embed/";
+            var linkUrlParts =  linkUrl.split('/');
+            embedUrl += linkUrlParts[linkUrlParts.length -1];
+            return $sce.trustAsResourceUrl(embedUrl);
+        }
     }
 })();

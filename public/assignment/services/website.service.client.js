@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .service("websiteService", websiteService);
 
-    function websiteService(){
+    function websiteService($http){
         var websites = [
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
             { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -20,21 +20,18 @@
         this.deleteWebsite = deleteWebsite;
         this.updateWebsite = updateWebsite;
 
-        function findWebsiteById(websiteId)
+        function findWebsiteById(userId, websiteId)
         {
-            for (var w in websites){
-                if (websites[w]._id === websiteId)
-                {
-                    return angular.copy(websites[w]);
-                }
-            }
+            var url = "/api/user/" + userId + "/website/" + websiteId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function createWebsite(userId, website){
-            website._id = (new Date()).getTime()+"";
-            website.developerId = userId;
-            websites.push(website);
-            return website;
+            var url = "/api/user/" + userId + "/website";
+            return $http.post(url, website);
         }
 
         function updateWebsite(userId, website){
@@ -57,21 +54,11 @@
         }
 
         function findWebsitesForUser(userId){
-            var sites = [];
-
-            for (var w in websites) {
-                if (websites[w].developerId === userId) {
-                    sites.push(websites[w]);
-                }
-            }
-            if (sites === null)
-            {
-                return null;
-            }
-            else
-            {
-                return sites;
-            }
+            var url = "/api/user/" + userId + "/website";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 })();

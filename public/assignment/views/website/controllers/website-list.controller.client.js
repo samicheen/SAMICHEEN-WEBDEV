@@ -10,7 +10,10 @@
 
         function init(){
             model.userId = userId;
-            model.websites = websiteService.findWebsitesForUser(userId);
+            websiteService.findWebsitesForUser(userId)
+                .then(function (websites) {
+                    model.websites = websites;
+                });
         }
         init();
 

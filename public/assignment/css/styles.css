@@ -1,4 +1,4 @@
-input, textarea.form-control, select.form-control {
+input, textarea.form-control, select.form-control, #upload {
     margin-bottom: 5px;
 }
 

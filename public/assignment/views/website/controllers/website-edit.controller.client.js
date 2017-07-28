@@ -15,8 +15,14 @@
 
         function init(){
             model.userId = userId;
-            model.websites = websiteService.findWebsitesForUser(userId);
-            model.website = websiteService.findWebsiteById(websiteId);
+            websiteService.findWebsitesForUser(userId)
+                .then(function (websites) {
+                    model.websites = websites;
+                });
+            websiteService.findWebsiteById(userId, websiteId)
+                .then(function (website) {
+                    model.website = website;
+                })
         }
         init();
 

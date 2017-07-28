@@ -18,13 +18,19 @@
 
         function findUserByUsername(username){
             var url = "/api/user?username=" + username;
-            return $http.get(url);
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                });
         }
 
         function registerUser(user)
         {
             var url = "/api/user";
-            return $http.post(url, user);
+            return $http.post(url, user)
+                .then(function(response){
+                    return response.data;
+                });
         }
 
         function updateUser(userId, user)
@@ -42,12 +48,18 @@
         function findUserByUsernameAndPassword(username, password)
         {
             var url = "/api/user?username=" + username + "&password=" + password;
-            return $http.get(url);
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                });
         }
 
         function findUserById(userId){
             var url = "/api/user/" + userId;
-            return $http.get(url);
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 })();

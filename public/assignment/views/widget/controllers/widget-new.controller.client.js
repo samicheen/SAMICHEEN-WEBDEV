@@ -4,7 +4,7 @@
         .module("WebAppMaker")
         .controller("widgetNewController", widgetNewController);
 
-    function widgetNewController($routeParams, $location, widgetService) {
+    function widgetNewController($routeParams, $location, widgetService, $sce) {
         var model = this;
 
         model.createWidget = createWidget;

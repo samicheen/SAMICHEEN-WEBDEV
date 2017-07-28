@@ -18,8 +18,7 @@
                 model.errorMessage = "User Not Found"
             }
             userService.findUserByUsernameAndPassword(user.username, user.password)
-                .then(function (response) {
-                    user = response.data;
+                .then(function (user) {
                     if(user === "0") {
                         model.errorMessage = "User Not Found"
                     }

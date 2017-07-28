@@ -13,13 +13,18 @@
 
         function init(){
             model.userId = userId;
-            model.websites = websiteService.findWebsitesForUser(userId);
+            websiteService.findWebsitesForUser(userId)
+                .then(function (websites) {
+                    model.websites = websites;
+                });
         }
         init();
 
         function createWebsite(website){
-           websiteService.createWebsite(userId, website);
-           $location.url("/user/" + userId + "/website");
+           websiteService.createWebsite(userId, website)
+               .then(function () {
+                   $location.url("/user/" + userId + "/website");
+               });
         }
     }
 })();

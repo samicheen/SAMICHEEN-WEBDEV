@@ -16,17 +16,17 @@
 
         function registerUser(user){
             userService.findUserByUsername(user.username)
-                .then(function (response) {
-                    var _user = response.data;
-                    if(_user === "0") {
+                .then(function (user_r) {
+                    var _user = user_r;
+                    if(_user === "0"){
                         return userService.registerUser(user)
                     }
-                    else{
+                    else {
                         model.error = "User already exists";
                     }
                 })
-                .then(function (response) {
-                    _user = response.data;
+                .then(function (user_re) {
+                    _user = user_re;
                     $location.url("/user/" + _user._id);
                 });
         }

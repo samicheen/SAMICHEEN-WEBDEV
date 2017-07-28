@@ -77,6 +77,7 @@ function deleteUser(request, response){
         if (users[u]._id === userId)
         {
             users.splice(u, 1);
+            response.send("success");
             return;
         }
     }
