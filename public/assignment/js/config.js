@@ -4,7 +4,8 @@
         .module("WebAppMaker")
         .config(configuration);
 
-    function configuration($routeProvider) {
+    function configuration($routeProvider, $httpProvider) {
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
         $routeProvider
             .when("/", {
                 templateUrl: "views/home/home.view.client.html",
@@ -72,7 +73,7 @@
                 controllerAs: "model"
             })
             .otherwise({
-                redirectTo: "/home"
+                redirectTo: "/"
             });
     }
-})()
+})();
