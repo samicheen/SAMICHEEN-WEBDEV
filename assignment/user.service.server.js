@@ -8,20 +8,20 @@ var users = [
 ];
 
 app.get("/api/users", getAllUsers);
-app.get("/api/user/:userId", getUserById);
-app.get("/api/user/", getUser);
 app.post("/api/user/", registerUser);
+app.get("/api/user/", getUser);
+app.get("/api/user/:userId", getUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 
-function getAllUsers (response) {
-    response.send(users);
+function getAllUsers (request, response) {
+    response.json(users);
 }
 
 function getUserById(request, response) {
     for(var u in users) {
         if (users[u]._id === request.params.userId) {
-            response.send(users[u]);
+            response.json(users[u]);
             return;
         }
     }
@@ -35,7 +35,7 @@ function getUser(request, response) {
         for (var u in users) {
             var _user = users[u];
             if (_user.username === username && _user.password === password) {
-                response.send(_user);
+                response.json(_user);
                 return;
             }
         }
@@ -43,7 +43,7 @@ function getUser(request, response) {
     else if(username){
         for (var u in users) {
             if (users[u].username === username) {
-                response.send(users[u]);
+                response.json(users[u]);
                 return;
             }
         }
@@ -55,7 +55,7 @@ function registerUser(request, response) {
     var user = request.body;
     user._id = (new Date()).getTime()+"";
     users.push(user);
-    response.send(user);
+    response.json(user);
 }
 
 function updateUser(request, response) {
@@ -64,7 +64,7 @@ function updateUser(request, response) {
     for (var u in users){
         if (users[u]._id === userId){
             users[u] = user;
-            response.send(user);
+            response.json(user);
             return;
         }
     }

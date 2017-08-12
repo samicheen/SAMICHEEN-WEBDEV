@@ -26,10 +26,13 @@
        class = "form-control"
        id = "width"/>
 
-<label for="file">Upload Image</label>
-<input id="file" multiple type="file" class="form-control"/>
-
-<a class="btn btn-default btn-block btn-success"
-   id = "upload"
-   href="#"
-   role="button">Upload</a>
+<form action="/api/assignment/uploads"   method="post" enctype="multipart/form-data">
+    <input  name="myFile"    type="file" class="form-control" required="required"/>
+    <input  name="name"     value="{{model.widget.name}}" style="display: none"/>
+    <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+    <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+    <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+    <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+    <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+    <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+</form>

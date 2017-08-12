@@ -20,8 +20,14 @@
             model.userId = userId;
             model.websiteId = websiteId;
             model.pageId = pageId;
-            model.widgets = widgetService.findWidgetsForPage(pageId);
-            model.widgetList = widgetService.getWidgetList();
+            widgetService.findWidgetsForPage(pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
+            widgetService.getWidgetList()
+                .then(function (widgetList) {
+                    model.widgetList = widgetList;
+                });
         }
         init();
 
@@ -42,19 +48,11 @@
         }
 
         function createWidget(widget){
-            var widget = widgetService.createWidget(pageId, widget);
-            $location.url("/user/"+ userId +"/website/"+ websiteId + "/page/"+ pageId + "/widget/"+ widget._id);
-        }
-
-        function trust(html) {
-            return $sce.trustAsHtml(html);
-        }
-
-        function getYouTubeEmbedUrl(linkUrl){
-            var embedUrl = "https://www.youtube.com/embed/";
-            var linkUrlParts =  linkUrl.split('/');
-            embedUrl += linkUrlParts[linkUrlParts.length -1];
-            return $sce.trustAsResourceUrl(embedUrl);
+            widgetService.createWidget(pageId, widget)
+                .then(function (response) {
+                    var widget = response.data;
+                    $location.url("/user/"+ userId +"/website/"+ websiteId + "/page/"+ pageId + "/widget/"+ widget._id);
+                });
         }
     }
 })();

@@ -24,28 +24,38 @@
             model.websiteId = websiteId;
             model.pageId = pageId;
             model.widgetId = widgetId;
-            model.widgets = widgetService.findWidgetsForPage(pageId);
-            model.widget = widgetService.findWidgetById(widgetId);
+            widgetService.findWidgetsForPage(pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
+            widgetService.findWidgetById(widgetId)
+                .then(function (widget) {
+                    model.widget = widget;
+                });
         }
         init();
 
         function updateWidget(widget){
-            widgetService.updateWidget(widget._id, widget);
-            $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/"+ pageId +"/widget");
+            widgetService.updateWidget(widget._id, widget)
+                .then(function () {
+                    $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/"+ pageId +"/widget");
+                });
         }
 
         function deleteWidget(widgetId){
-            widgetService.deleteWidget(widgetId);
-            $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/"+ pageId +"/widget");
+            widgetService.deleteWidget(widgetId)
+                .then(function () {
+                    $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/"+ pageId +"/widget");
+                });
         }
 
         function getEditPath(widget) {
-            var path = "views/widget/editors/widget-"+widget.widgetType.toLowerCase()+"-edit.view.client.html";
+            var path = "views/widget/editors/widget-" + widget.widgetType.toLowerCase() + "-edit.view.client.html";
             return path;
         }
 
         function getIncludePath(widget) {
-            var path = "views/widget/templates/widget-"+widget.widgetType.toLowerCase()+".view.client.html";
+            var path = "views/widget/templates/widget-" + widget.widgetType.toLowerCase() + ".view.client.html";
             return path;
         }
 

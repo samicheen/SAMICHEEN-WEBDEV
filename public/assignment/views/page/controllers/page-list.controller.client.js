@@ -12,7 +12,7 @@
         function init(){
             model.userId = userId;
             model.websiteId = websiteId;
-            pageService.findPagesForWebsite(userId, websiteId)
+            pageService.findPagesForWebsite(websiteId)
                 .then(function (pages) {
                     model.pages = pages;
                 });

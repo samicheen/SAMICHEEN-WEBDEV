@@ -6,9 +6,9 @@ var pages = [
     { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
 ];
 
+app.post("/api/website/:websiteId/page", createPage);
 app.get("/api/website/:websiteId/page", findPagesForWebsite);
 app.get("/api/page/:pageId", findPageById);
-app.post("/api/website/:websiteId/page", createPage);
 app.put("/api/page/:pageId", updatePage);
 app.delete("/api/page/:pageId", deletePage);
 
