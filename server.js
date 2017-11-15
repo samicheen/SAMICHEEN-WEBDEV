@@ -17,11 +17,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.set('view engine', 'ejs');
-// require("./utilities/filelist");
 
 app.use(express.static(__dirname + '/public'));
-
-//require("./test/app");
 
 require("./server/app");
 
