@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div>
+      <!--  <div ng-show="welcomeUser" class="alert alert-info">
+            Welcome {{welcomeUser.firstName}}
+        </div>-->
+        <div  ng-show="model.errorMessage" class="alert alert-danger">
+            {{model.errorMessage}}
+        </div>
+
+        <a class="btn btn-block btn-primary"
+           href="/auth/facebook">
+            <span class="fa fa-facebook"></span>
+            Facebook
+        </a>
+
+        <a class="btn btn-block btn-danger"
+           href="/auth/google">
+            <span class="fa fa-google-plus"></span>
+            Google
+        </a>
+
+        <h2>Login</h2>
+        <label for="username">Username</label>
+        <input name = "username"
+               ng-model="model.user.username"
+               placeholder="username"
+               class = "form-control"
+               id = "username"/>
+
+        <label for="password">Password</label>
+        <input name = "password"
+               ng-model="model.user.password"
+               placeholder="password"
+               type = "password"
+               class = "form-control"
+               id = "password"/>
+
+        <a class="btn btn-default btn-block btn-primary"
+           ng-click="model.login(model.user)"
+           role="button">Login</a>
+
+        <a class="btn btn-default btn-block btn-success"
+           href="#!/register"
+           role="button">Register</a>
+    </div>
+</div>

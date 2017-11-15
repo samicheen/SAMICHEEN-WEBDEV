@@ -1,0 +1,51 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="navbar-link" href="#!/website">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+
+        <div class="navbar-header col-xs-8">
+            <a class="navbar-brand" href="#">Edit Website</a>
+        </div>
+
+        <div class="navbar-text pull-right">
+            <a class="navbar-link" ng-click="model.updateWebsite(model.website)">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3 visible-lg split-view-left">
+            <div ng-include="'views/website/templates/website-list.component.client.html'"></div>
+        </div>
+        <div class="col-xs-12 col-lg-9 split-view-right">
+            <label for="name">Website Name</label>
+            <input name = "name"
+                   ng-model = "model.website.name"
+                   placeholder="Blogger"
+                   class = "form-control"
+                   id = "name"/>
+
+            <label for="desc">Website Description</label>
+            <textarea name = "desc"
+                      ng-model = "model.website.description"
+                      placeholder="Blog Description"
+                      rows="5"
+                      class = "form-control"
+                      id = "desc"></textarea>
+
+            <a class="btn btn-default btn-block btn-danger"
+               ng-click="model.deleteWebsite(model.website._id)"
+               role="button">Delete</a>
+
+            <a class="btn btn-default btn-block btn-danger"
+               href="#!/website"
+               role="button">Cancel</a>
+        </div>
+    </div>
+</div>
+<div ng-include="'views/common/footer.view.client.html'"></div>
